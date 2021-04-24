@@ -1,12 +1,17 @@
-name: Build
-on: [push, pull_request]
+name: Bump version
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      uses: docker/build-push-action@v1
       with:
-        push: false
+        fetch-depth: '0'
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.26.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: true
