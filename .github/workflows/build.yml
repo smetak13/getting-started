@@ -1,7 +1,7 @@
 name: Bump version
 on:
   schedule:
-    - cron: "05 13 * * 0"
+    - cron: "10 15 * * 0"
   workflow_dispatch:
 jobs:
   build:
@@ -13,6 +13,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: minor
       - name: Create a GitHub release
         uses: actions/create-release@v1
         env:
