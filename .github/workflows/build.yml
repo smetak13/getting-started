@@ -27,4 +27,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          branch: ref/${{ steps.tag_version.outputs.new_tag }}
+          branch: release/${{ steps.tag_version.outputs.new_tag }}
